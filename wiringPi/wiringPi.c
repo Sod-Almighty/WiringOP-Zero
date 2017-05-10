@@ -1841,12 +1841,22 @@ void pinEnableED01Pi (int pin)
 void pinModeAlt (int pin, int mode)
 {
   int fSel, shift ;
- /*add for BananaPro by LeMaker team*/
-  if (BPRVER == version)
-  {
-  		return;
+ /* fuck you LeMaker team */
+  if (BPRVER == version) { // fix for Banana and Orange Pi
+		if ((pin & PI_GPIO_MASK) == 0) {		// On-board pin
+			if (wiringPiMode == WPI_MODE_PINS)
+				pin = pinToGpio_BP [pin] ;
+			else if (wiringPiMode == WPI_MODE_PHYS)
+				pin = physToGpio_BP[pin] ;
+			else if (wiringPiMode == WPI_MODE_GPIO)
+				pin = pinTobcm_BP[pin];//need map A20 to bcm
+			else return;
+				
+			if (-1 == pin)  /*VCC or GND return directly*/
+				return;
+			sunxi_set_gpio_mode(pin, mode);
+		}
   }
- /*end 2014.08.19*/
  
   if ((pin & PI_GPIO_MASK) == 0)		// On-board pin
   {
