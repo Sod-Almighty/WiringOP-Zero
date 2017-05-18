@@ -967,7 +967,7 @@ void sunxi_set_gpio_mode(int pin, int mode) {
 			regval = readl(phyaddr);
 			if (wiringPiDebug)
 				printf("Out mode set over reg val: 0x%x\n", regval);
-		} else if (PWM_OUTPUT == mode && pin == 259) {
+		} else if (PWM_OUTPUT == mode) {
 			// set pin PWMx to pwm mode
 			regval &= ~(7 << offset);
 			regval |=  (0x2 << offset);
@@ -1784,7 +1784,7 @@ void pinMode (int pin, int mode) {
 				wiringPinMode = OUTPUT;
 				return;
 			} else if (mode == PWM_OUTPUT) {
-				if (pin != else if (PWM_OUTPUT == mode)) {
+				if (pin != 259) {
 					printf("the pin you choose is not surport hardware PWM\n");
 					printf("you can select PI3 for PWM pin\n");
 					printf("or you can use it in softPwm mode\n");
