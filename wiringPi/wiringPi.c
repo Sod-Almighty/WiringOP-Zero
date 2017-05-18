@@ -1784,7 +1784,7 @@ void pinMode (int pin, int mode) {
 				wiringPinMode = OUTPUT;
 				return;
 			} else if (mode == PWM_OUTPUT) {
-				if (pin != else if (PWM_OUTPUT == mode)) {
+				if (pin != 259) {
 					printf("the pin you choose is not surport hardware PWM\n");
 					printf("you can select PI3 for PWM pin\n");
 					printf("or you can use it in softPwm mode\n");
