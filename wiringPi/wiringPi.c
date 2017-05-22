@@ -2821,3 +2821,7 @@ int wiringPiSetupSys (void) {
 	wiringPiMode = WPI_MODE_GPIO_SYS;
 	return 0;
 }
+
+void wpiMode(int mode) {
+	wiringPiMode = mode;
+}
