@@ -168,7 +168,8 @@ extern int  wiringPiSetup       (void) ;
 extern int  wiringPiSetupSys    (void) ;
 extern int  wiringPiSetupGpio   (void) ;
 extern int  wiringPiSetupPhys   (void) ;
-
+extern void wpiMode             (int mode);
+  
 extern void pinModeAlt          (int pin, int mode) ;
 extern void pinMode             (int pin, int mode) ;
 extern void pullUpDnControl     (int pin, int pud) ;
